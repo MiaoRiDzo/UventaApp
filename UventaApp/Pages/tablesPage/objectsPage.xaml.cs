@@ -65,5 +65,14 @@ namespace UventaApp.Pages.tablesPage
         {
 
         }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                UventaArendaEntities.getContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                dgObjects.ItemsSource = UventaArendaEntities.getContext().RentalObject.ToList();
+            }
+        }
     }
 }

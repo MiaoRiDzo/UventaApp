@@ -22,12 +22,12 @@ namespace UventaApp.Resources.Dictionarys
         private static UventaArendaEntities _context;
         public static UventaArendaEntities getContext()
         {
-            if(_context == null)
+            if (_context == null)
             {
                 _context = new UventaArendaEntities();
-            }return _context;
+            }
+            return _context;
         }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -40,5 +40,6 @@ namespace UventaApp.Resources.Dictionarys
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Tenant> Tenant { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

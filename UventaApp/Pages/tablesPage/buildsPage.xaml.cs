@@ -26,7 +26,7 @@ namespace UventaApp.Pages.tablesPage
         {
             InitializeComponent();
             this.mWindow = mWindow;
-            dgUsers.ItemsSource = UventaArendaEntities.getContext().Building.ToList();
+            dgBuilds.ItemsSource = UventaArendaEntities.getContext().Building.ToList();
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -37,6 +37,15 @@ namespace UventaApp.Pages.tablesPage
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             mWindow.mFrame.Navigate(new Pages.editPages.buildsEdit(null, mWindow));
+        }
+
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if (Visibility == Visibility.Visible)
+            {
+                UventaArendaEntities.getContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                dgBuilds.ItemsSource = UventaArendaEntities.getContext().Building.ToList();
+            }
         }
     }
 }

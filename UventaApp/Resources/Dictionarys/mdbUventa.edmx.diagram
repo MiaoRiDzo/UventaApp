@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="43c3efd0cf684165a23c3ae9967249e9" Name="Diagram1">
+      <Diagram DiagramId="43c3efd0cf684165a23c3ae9967249e9" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="UventaArendaModel.Building" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UventaArendaModel.Rent" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="UventaArendaModel.RentalObject" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
@@ -17,6 +17,7 @@
         <AssociationConnector Association="UventaArendaModel.FK_Rent_Tenant" ManuallyRouted="false" />
         <AssociationConnector Association="UventaArendaModel.FK_Tenant_RentalType" ManuallyRouted="false" />
         <AssociationConnector Association="UventaArendaModel.FK_User_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UventaArendaModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

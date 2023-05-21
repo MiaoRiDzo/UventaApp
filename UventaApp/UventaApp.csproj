@@ -128,11 +128,19 @@
     <Compile Include="Resources\Dictionarys\Role.cs">
       <DependentUpon>mdbUventa.tt</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Dictionarys\sysdiagrams.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Dictionarys\Tenant.cs">
       <DependentUpon>mdbUventa.tt</DependentUpon>
     </Compile>
     <Compile Include="Resources\Dictionarys\User.cs">
       <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UventaArendaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UventaArendaDataSet.xsd</DependentUpon>
     </Compile>
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -246,6 +254,17 @@
     </EntityDeploy>
     <None Include="Resources\Dictionarys\mdbUventa.edmx.diagram">
       <DependentUpon>mdbUventa.edmx</DependentUpon>
+    </None>
+    <None Include="UventaArendaDataSet.xsc">
+      <DependentUpon>UventaArendaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UventaArendaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UventaArendaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UventaArendaDataSet.xss">
+      <DependentUpon>UventaArendaDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

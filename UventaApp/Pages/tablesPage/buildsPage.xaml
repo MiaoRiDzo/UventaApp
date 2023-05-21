@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:UventaApp.Pages.tablesPage"
       mc:Ignorable="d" 
       d:DesignHeight="340" d:DesignWidth="740" d:Background="White"
-      Title="Пользователи и роли">
+      Title="Пользователи и роли" IsVisibleChanged="Page_IsVisibleChanged">
 
     <!--Внешняя stactpanel-->
     <StackPanel Orientation="Vertical" Margin="5">
@@ -20,7 +20,7 @@
         </StackPanel>
 
         <!--DataGrid-->
-        <DataGrid x:Name="dgUsers" Height="258" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dgBuilds" Height="258" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Наименование" Binding="{Binding BuildingName}" Width="180"/>
                 <DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="180"/>

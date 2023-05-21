@@ -28,7 +28,7 @@ namespace UventaApp.Pages.tablesPage
             InitializeComponent();
             this.mWindow = mWindow;
             dgUsers.ItemsSource = UventaArendaEntities.getContext().User.ToList();
-            //cbRole.ItemsSource = UventaArendaEntities.getContext().Role.ToList();
+            cbRole.ItemsSource = UventaArendaEntities.getContext().Role.ToList();
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace UventaApp.Pages.tablesPage
                     UventaArendaEntities.getContext().User.RemoveRange(removes);
                     UventaArendaEntities.getContext().SaveChanges();
                     MessageBox.Show("Данные удалены");
-                    dgUsers.ItemsSource = UventaArendaEntities.getContext().Tenant.ToList();
+                    dgUsers.ItemsSource = UventaArendaEntities.getContext().User.ToList();
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message.ToString()); }
             }

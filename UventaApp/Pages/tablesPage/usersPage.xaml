@@ -18,7 +18,7 @@
             <TextBox x:Name="srUserName" Style="{DynamicResource TB4}" Width="240" Margin="2" TextChanged="srUserName_TextChanged"/>
             <Button x:Name="btnSearch" Style="{DynamicResource btnStandart}" Content="Найти" FontSize="14" Margin="10 6" Click="btnSearch_Click"/>
             <Label Style="{DynamicResource H4}" Content="Роль"/>
-            <ComboBox x:Name="cbRole" Margin="4" Width="160" Height="25" SelectionChanged="cbRole_SelectionChanged" />
+            <ComboBox x:Name="cbRole" SelectedItem="{Binding Role}" DisplayMemberPath="RoleName" Margin="4" Width="160" Height="25" SelectionChanged="cbRole_SelectionChanged" />
             <Button x:Name="resetBtn" Content="Сбросить" Style="{DynamicResource btnStandart}" Margin="10 6" Click="resetBtn_Click"/>
         </StackPanel>
 
