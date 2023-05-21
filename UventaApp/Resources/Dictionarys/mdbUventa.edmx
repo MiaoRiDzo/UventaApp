@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище UventaArendaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="BuildingName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="RentId" />
+          </Key>
+          <Property Name="RentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RentalObjectId" Type="int" Nullable="false" />
+          <Property Name="TenantId" Type="int" Nullable="false" />
+          <Property Name="ContractCreationDate" Type="date" Nullable="false" />
+          <Property Name="ContractStartDate" Type="date" Nullable="false" />
+          <Property Name="ContractEndDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalObject">
+          <Key>
+            <PropertyRef Name="RentalObjectId" />
+          </Key>
+          <Property Name="RentalObjectId" Type="int" Nullable="false" />
+          <Property Name="BuildingId" Type="int" Nullable="false" />
+          <Property Name="ObjectNumber" Type="int" Nullable="false" />
+          <Property Name="Area" Type="float" Nullable="false" />
+          <Property Name="RentalPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RentalType">
+          <Key>
+            <PropertyRef Name="RentalTypeId" />
+          </Key>
+          <Property Name="RentalTypeId" Type="int" Nullable="false" />
+          <Property Name="RentalTypeName" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="RentalTypeId" Type="int" Nullable="false" />
+          <Property Name="RegistrationAddress" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PassportSeries" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="PassportNumber" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Rent_RentalObject">
+          <End Role="RentalObject" Type="Self.RentalObject" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalObject">
+              <PropertyRef Name="RentalObjectId" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="RentalObjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="TenantId" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RentalObject_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="RentalObject" Type="Self.RentalObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="RentalObject">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenant_RentalType">
+          <End Role="RentalType" Type="Self.RentalType" Multiplicity="1" />
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalType">
+              <PropertyRef Name="RentalTypeId" />
+            </Principal>
+            <Dependent Role="Tenant">
+              <PropertyRef Name="RentalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище UventaArendaModelContainer">
+          <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalObject" EntityType="Self.RentalObject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalType" EntityType="Self.RentalType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Rent_RentalObject" Association="Self.FK_Rent_RentalObject">
+            <End Role="RentalObject" EntitySet="RentalObject" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Tenant" Association="Self.FK_Rent_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RentalObject_Building" Association="Self.FK_RentalObject_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="RentalObject" EntitySet="RentalObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenant_RentalType" Association="Self.FK_Tenant_RentalType">
+            <End Role="RentalType" EntitySet="RentalType" />
+            <End Role="Tenant" EntitySet="Tenant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UventaArendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Building">
+          <Key>
+            <PropertyRef Name="BuildingId" />
+          </Key>
+          <Property Name="BuildingId" Type="Int32" Nullable="false" />
+          <Property Name="BuildingName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RentalObject" Relationship="Self.FK_RentalObject_Building" FromRole="Building" ToRole="RentalObject" />
+        </EntityType>
+        <EntityType Name="Rent">
+          <Key>
+            <PropertyRef Name="RentId" />
+          </Key>
+          <Property Name="RentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RentalObjectId" Type="Int32" Nullable="false" />
+          <Property Name="TenantId" Type="Int32" Nullable="false" />
+          <Property Name="ContractCreationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ContractStartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ContractEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="RentalObject" Relationship="Self.FK_Rent_RentalObject" FromRole="Rent" ToRole="RentalObject" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_Rent_Tenant" FromRole="Rent" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="RentalObject">
+          <Key>
+            <PropertyRef Name="RentalObjectId" />
+          </Key>
+          <Property Name="RentalObjectId" Type="Int32" Nullable="false" />
+          <Property Name="BuildingId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectNumber" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Double" Nullable="false" />
+          <Property Name="RentalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Building" Relationship="Self.FK_RentalObject_Building" FromRole="RentalObject" ToRole="Building" />
+          <NavigationProperty Name="Rent" Relationship="Self.FK_Rent_RentalObject" FromRole="RentalObject" ToRole="Rent" />
+        </EntityType>
+        <EntityType Name="RentalType">
+          <Key>
+            <PropertyRef Name="RentalTypeId" />
+          </Key>
+          <Property Name="RentalTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RentalTypeName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tenant" Relationship="Self.FK_Tenant_RentalType" FromRole="RentalType" ToRole="Tenant" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Tenant">
+          <Key>
+            <PropertyRef Name="TenantId" />
+          </Key>
+          <Property Name="TenantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RentalTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportSeries" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PassportNumber" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rent" Relationship="Self.FK_Rent_Tenant" FromRole="Tenant" ToRole="Rent" />
+          <NavigationProperty Name="RentalType" Relationship="Self.FK_Tenant_RentalType" FromRole="Tenant" ToRole="RentalType" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_RentalObject_Building">
+          <End Role="Building" Type="Self.Building" Multiplicity="1" />
+          <End Role="RentalObject" Type="Self.RentalObject" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Building">
+              <PropertyRef Name="BuildingId" />
+            </Principal>
+            <Dependent Role="RentalObject">
+              <PropertyRef Name="BuildingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_RentalObject">
+          <End Role="RentalObject" Type="Self.RentalObject" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalObject">
+              <PropertyRef Name="RentalObjectId" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="RentalObjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rent_Tenant">
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="1" />
+          <End Role="Rent" Type="Self.Rent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tenant">
+              <PropertyRef Name="TenantId" />
+            </Principal>
+            <Dependent Role="Rent">
+              <PropertyRef Name="TenantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tenant_RentalType">
+          <End Role="RentalType" Type="Self.RentalType" Multiplicity="1" />
+          <End Role="Tenant" Type="Self.Tenant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RentalType">
+              <PropertyRef Name="RentalTypeId" />
+            </Principal>
+            <Dependent Role="Tenant">
+              <PropertyRef Name="RentalTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UventaArendaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Building" EntityType="Self.Building" />
+          <EntitySet Name="Rent" EntityType="Self.Rent" />
+          <EntitySet Name="RentalObject" EntityType="Self.RentalObject" />
+          <EntitySet Name="RentalType" EntityType="Self.RentalType" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Tenant" EntityType="Self.Tenant" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_RentalObject_Building" Association="Self.FK_RentalObject_Building">
+            <End Role="Building" EntitySet="Building" />
+            <End Role="RentalObject" EntitySet="RentalObject" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_RentalObject" Association="Self.FK_Rent_RentalObject">
+            <End Role="RentalObject" EntitySet="RentalObject" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rent_Tenant" Association="Self.FK_Rent_Tenant">
+            <End Role="Tenant" EntitySet="Tenant" />
+            <End Role="Rent" EntitySet="Rent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tenant_RentalType" Association="Self.FK_Tenant_RentalType">
+            <End Role="RentalType" EntitySet="RentalType" />
+            <End Role="Tenant" EntitySet="Tenant" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище UventaArendaModelContainer" CdmEntityContainer="UventaArendaEntities">
+          <EntitySetMapping Name="Building">
+            <EntityTypeMapping TypeName="UventaArendaModel.Building">
+              <MappingFragment StoreEntitySet="Building">
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rent">
+            <EntityTypeMapping TypeName="UventaArendaModel.Rent">
+              <MappingFragment StoreEntitySet="Rent">
+                <ScalarProperty Name="RentId" ColumnName="RentId" />
+                <ScalarProperty Name="RentalObjectId" ColumnName="RentalObjectId" />
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="ContractCreationDate" ColumnName="ContractCreationDate" />
+                <ScalarProperty Name="ContractStartDate" ColumnName="ContractStartDate" />
+                <ScalarProperty Name="ContractEndDate" ColumnName="ContractEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalObject">
+            <EntityTypeMapping TypeName="UventaArendaModel.RentalObject">
+              <MappingFragment StoreEntitySet="RentalObject">
+                <ScalarProperty Name="RentalObjectId" ColumnName="RentalObjectId" />
+                <ScalarProperty Name="BuildingId" ColumnName="BuildingId" />
+                <ScalarProperty Name="ObjectNumber" ColumnName="ObjectNumber" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="RentalPrice" ColumnName="RentalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalType">
+            <EntityTypeMapping TypeName="UventaArendaModel.RentalType">
+              <MappingFragment StoreEntitySet="RentalType">
+                <ScalarProperty Name="RentalTypeId" ColumnName="RentalTypeId" />
+                <ScalarProperty Name="RentalTypeName" ColumnName="RentalTypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="UventaArendaModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tenant">
+            <EntityTypeMapping TypeName="UventaArendaModel.Tenant">
+              <MappingFragment StoreEntitySet="Tenant">
+                <ScalarProperty Name="TenantId" ColumnName="TenantId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="RentalTypeId" ColumnName="RentalTypeId" />
+                <ScalarProperty Name="RegistrationAddress" ColumnName="RegistrationAddress" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+                <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="UventaArendaModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

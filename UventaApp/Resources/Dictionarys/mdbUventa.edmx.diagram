@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="43c3efd0cf684165a23c3ae9967249e9" Name="Diagram1">
+        <EntityTypeShape EntityType="UventaArendaModel.Building" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.Rent" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.RentalObject" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.RentalType" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.Role" Width="1.5" PointX="5.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.Tenant" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UventaArendaModel.User" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="UventaArendaModel.FK_RentalObject_Building" ManuallyRouted="false" />
+        <AssociationConnector Association="UventaArendaModel.FK_Rent_RentalObject" ManuallyRouted="false" />
+        <AssociationConnector Association="UventaArendaModel.FK_Rent_Tenant" ManuallyRouted="false" />
+        <AssociationConnector Association="UventaArendaModel.FK_Tenant_RentalType" ManuallyRouted="false" />
+        <AssociationConnector Association="UventaArendaModel.FK_User_Role" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

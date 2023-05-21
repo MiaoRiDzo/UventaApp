@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CC707FDF-5258-4963-8D23-DCD91BFB15FA}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UventaApp</RootNamespace>
+    <AssemblyName>UventaApp</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Pages\editPages\buildsEdit.xaml.cs">
+      <DependentUpon>buildsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editPages\objectEdit.xaml.cs">
+      <DependentUpon>objectEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editPages\rentsEdit .xaml.cs">
+      <DependentUpon>rentsEdit .xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editPages\tenantsEdit.xaml.cs">
+      <DependentUpon>tenantsEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\editPages\usersEdit.xaml.cs">
+      <DependentUpon>usersEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\buildsPage.xaml.cs">
+      <DependentUpon>buildsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\objectsPage.xaml.cs">
+      <DependentUpon>objectsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\rentsPage.xaml.cs">
+      <DependentUpon>rentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\rolesPage.xaml.cs">
+      <DependentUpon>rolesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\tenantsPage.xaml.cs">
+      <DependentUpon>tenantsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\tablesPage\usersPage.xaml.cs">
+      <DependentUpon>usersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Classes\AuthUser.cs" />
+    <Compile Include="Resources\Dictionarys\Building.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\mdbUventa.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mdbUventa.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\mdbUventa.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\mdbUventa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mdbUventa.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\Rent.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\RentalObject.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\RentalType.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\Role.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\Tenant.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Dictionarys\User.cs">
+      <DependentUpon>mdbUventa.tt</DependentUpon>
+    </Compile>
+    <Page Include="LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="mWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editPages\buildsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editPages\objectEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editPages\rentsEdit .xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\editPages\tenantsEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\editPages\usersEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\menuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\buildsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\objectsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\rentsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\rolesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\tenantsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\tablesPage\usersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionarys\ColorLibrary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dictionarys\HeadersStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Dictionarys\MainStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="mWindow.xaml.cs">
+      <DependentUpon>mWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\menuPage.xaml.cs">
+      <DependentUpon>menuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Resources\Dictionarys\mdbUventa.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>mdbUventa.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Resources\Dictionarys\mdbUventa.edmx.diagram">
+      <DependentUpon>mdbUventa.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Advanced\arenda.sql" />
+    <Content Include="Resources\Dictionarys\mdbUventa.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>mdbUventa.Context.cs</LastGenOutput>
+      <DependentUpon>mdbUventa.edmx</DependentUpon>
+    </Content>
+    <Content Include="Resources\Dictionarys\mdbUventa.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>mdbUventa.edmx</DependentUpon>
+      <LastGenOutput>mdbUventa.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\brand.png" />
+    <Resource Include="Resources\Images\icon.ico" />
+    <Resource Include="Resources\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

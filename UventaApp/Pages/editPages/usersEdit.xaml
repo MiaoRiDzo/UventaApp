@@ -1,0 +1,48 @@
+﻿<Page x:Class="UventaApp.Pages.editPages.usersEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UventaApp.Pages.editPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="340" d:DesignWidth="740"
+      Title="tenantsEdit">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--Полное имя-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Имя пользователя"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding FullName}" x:Name="entName" Width="180"/>
+                </StackPanel>
+                <!--Логин-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Логин"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding Login}" x:Name="entLogin" Width="180"/>
+                </StackPanel>
+                <!--Пароль-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Пароль"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding Password}" x:Name="entPass" Width="180"/>
+                </StackPanel>
+                <!--Роль-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Роль"/>
+                    <ComboBox SelectedItem="{Binding RoleId}" Style="{DynamicResource CB4}" SelectedIndex="{Binding RoleId}" x:Name="cbRole" Width="180" DisplayMemberPath="RoleName"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--Buttons-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="addBtn" Content="Сохранить" Margin="10" Style="{DynamicResource btnStandart}" Click="addBtn_Click"/>
+            <Button x:Name="cancelBtn"  Content="Отменить" Margin="10" Style="{DynamicResource btnStandart}" Click="cancelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

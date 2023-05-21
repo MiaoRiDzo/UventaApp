@@ -1,0 +1,67 @@
+﻿<Page x:Class="UventaApp.Pages.editPages.tenantsEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UventaApp.Pages.editPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="340" d:DesignWidth="740"
+      Title="tenantsEdit">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--Имя-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Имя"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding FirstName}" x:Name="entName" Width="180"/>
+                </StackPanel>
+                <!--Фамилия-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Фамилия"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding LastName}" x:Name="entLName" Width="180"/>
+                </StackPanel>
+                <!--Тип арендатора-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Тип арендатора"/>
+                    <ComboBox SelectedItem="{Binding RentalTypeId}" Style="{DynamicResource CB4}" SelectedIndex="{Binding RentalTypeId}" x:Name="cbType" Width="180" DisplayMemberPath="RentalTypeName"/>
+                </StackPanel>
+                <!--Телефон-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Адрес регистрации"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding RegistrationAddress}" x:Name="entAdress" Width="180"/>
+                </StackPanel>
+                <!--Телефон-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Номер телефона"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding PhoneNumber}" x:Name="entPhone" Width="180"/>
+                </StackPanel>
+                <!--Электронная почта-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="E-Mail"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding Email}" x:Name="entEmail" Width="180"/>
+                </StackPanel>
+
+                <!--Паспорт-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Паспорт" Margin="30 10" VerticalAlignment="Center"/>
+                    <Label Style="{DynamicResource H4}" Content="Серия"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding PassportSeries}" x:Name="entSeries" Width="80"/>
+                    <Label Style="{DynamicResource H4}" Content="Номер"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding PassportNumber}" x:Name="entNumber" Width="80"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--Buttons-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="addBtn" Content="Сохранить" Margin="10" Style="{DynamicResource btnStandart}" Click="addBtn_Click"/>
+            <Button Content="Отменить" Margin="10" Style="{DynamicResource btnStandart}" Click="cancelClick"/>
+        </StackPanel>
+    </Grid>
+</Page>

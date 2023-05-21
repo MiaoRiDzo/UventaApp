@@ -1,0 +1,49 @@
+﻿<Page x:Class="UventaApp.Pages.tablesPage.tenantsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UventaApp.Pages.tablesPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="340" d:DesignWidth="740" d:Background="White"
+      Title="Пользователи и роли" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <!--Внешняя stactpanel-->
+    <StackPanel Orientation="Vertical" Margin="5">
+
+        <!--Поиск-->
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Image Source="/Resources/Images/logo.png" Width="32"/>
+            <Rectangle Width="2" Height="28" Fill="Black" Margin="4 0"/>
+            <TextBox x:Name="srHomeName" Style="{DynamicResource TB4}" Width="240" Margin="2"/>
+            <Button x:Name="btnSearch" Style="{DynamicResource btnStandart}" Content="Найти" FontSize="14" Margin="10 6"/>
+        </StackPanel>
+
+        <!--DataGrid-->
+        <DataGrid x:Name="dgTenant" Height="251" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="100"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="100"/>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}" Width="120"/>
+                <DataGridTextColumn Header="EMAIL" Binding="{Binding Email}" Width="80"/>
+                <DataGridTextColumn Header="Серия пасспорта" Binding="{Binding PassportSeries}" Width="110"/>
+                <DataGridTextColumn Header="Номер пасспорта" Binding="{Binding PassportNumber}" Width="110"/>
+                <!--Редактировать-->
+                <DataGridTemplateColumn Header="Редактировать" Width="160">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnEdit" Content="Редактировать" Style="{DynamicResource btnStandart}" Click="btnEdit_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!--Кнопки управления-->
+
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnAdd" Content="Добавить" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnAdd_Click"/>
+            <Button x:Name="btnDel" Content="Удалить" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnDel_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="UventaApp.Pages.editPages.objectEdit"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:UventaApp.Pages.editPages"
+      mc:Ignorable="d" 
+       d:DesignHeight="340" d:DesignWidth="740"
+      Title="tenantsEdit">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--Здание-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Здание"/>
+                    <ComboBox  Style="{DynamicResource CB4}" SelectedIndex="{Binding BuildingID}" x:Name="cbBuild" Width="180" DisplayMemberPath="BuildingName"/>
+                </StackPanel>
+                <!--Номер помещения-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Номер помещения"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding ObjectNumber}" x:Name="entNum" Width="180"/>
+                </StackPanel>
+                <!--Площадь-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Площадь"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding Area}" x:Name="entArea" Width="180"/>
+                </StackPanel>
+                <!--Цена-->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Label Style="{DynamicResource H4}" Content="Цена"/>
+                    <TextBox Style="{DynamicResource TB4}" Text="{Binding RentalPrice}" x:Name="entPrice" Width="180"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--Buttons-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="addBtn" Content="Сохранить" Margin="10" Style="{DynamicResource btnStandart}" Click="addBtn_Click"/>
+            <Button x:Name="cancelBtn"  Content="Отменить" Margin="10" Style="{DynamicResource btnStandart}" Click="cancelBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
