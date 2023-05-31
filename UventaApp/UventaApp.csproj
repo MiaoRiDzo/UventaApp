@@ -272,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Advanced\arenda.sql" />
+    <Content Include="Resources\Advanced\script.sql" />
     <Content Include="Resources\Dictionarys\mdbUventa.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>mdbUventa.Context.cs</LastGenOutput>
