@@ -26,8 +26,8 @@
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="100"/>
                 <DataGridTextColumn Header="Номер телефона" Binding="{Binding PhoneNumber}" Width="120"/>
                 <DataGridTextColumn Header="EMAIL" Binding="{Binding Email}" Width="80"/>
-                <DataGridTextColumn Header="Серия пасспорта" Binding="{Binding PassportSeries}" Width="110"/>
-                <DataGridTextColumn Header="Номер пасспорта" Binding="{Binding PassportNumber}" Width="110"/>
+                <DataGridTextColumn Header="Серия паспорта" Binding="{Binding PassportSeries}" Width="110"/>
+                <DataGridTextColumn Header="Номер паспорта" Binding="{Binding PassportNumber}" Width="110"/>
                 <!--Редактировать-->
                 <DataGridTemplateColumn Header="Редактировать" Width="160">
                     <DataGridTemplateColumn.CellTemplate>

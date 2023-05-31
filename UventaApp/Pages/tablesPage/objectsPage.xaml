@@ -42,7 +42,7 @@
         <StackPanel  Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button x:Name="btnAdd" Content="Добавить" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnAdd_Click"/>
             <Button x:Name="btnDel" Content="Удалить" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnDel_Click"/>
-            <Button x:Name="btnBilds" Content="Здвния" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnBilds_Click"/>
+            <Button x:Name="btnBilds" Content="Здания" Margin="15 10" Style="{DynamicResource btnStandart}" Click="btnBilds_Click"/>
 
         </StackPanel>
     </StackPanel>

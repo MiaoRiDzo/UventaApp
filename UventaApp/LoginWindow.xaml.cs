@@ -58,7 +58,7 @@ namespace UventaApp
                         break;
                     }
                 }
-                if (authUser.Name == null) { MessageBox.Show("Не верный логин"); }
+                if (authUser.Name == null) { MessageBox.Show("Неверный логин"); }
                 if (authUser != null)
                 {
                     if (authUser.Password == tbPass.Text)
@@ -67,7 +67,7 @@ namespace UventaApp
                         win.Show();
                         this.Close();
                     }
-                    else if (authUser.Password != tbPass.Text) { MessageBox.Show("Не верный пароль"); }
+                    else if (authUser.Password != tbPass.Text) { MessageBox.Show("Неверный пароль"); }
                 }
             }
         }
